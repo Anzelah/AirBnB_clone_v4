@@ -8,11 +8,7 @@ $(document).ready(function () {
       delete checkedAmenities[amenityId];
     }
     let amenities = Object.values(checkedAmenities);
-    if (amenities.length > 0) {
-      $('div.amenities h4').text(amenities).join(', ');
-    } else {
-      $('div.amenities h4').html('&nbsp;');
-    }
+    $('div.amenities h4').text(amenities).join(', ');
   });
 });
 
@@ -47,16 +43,11 @@ $.ajax({
 });
 
 $(':button').click(function () {
-  let checked = {}
-  ($('input:checked').each(function) {
-    checked[$(this).data('name')] = $(this).val()
-    amenities = Object.keys(checked);
-    $('div.amenities h4').text(amenities).join(', ');
-  }
+  amenities
   $.ajax({
     url: 'http://0.0.0.0:5001/api/v1/places_search/',
     type: 'POST',
-    data: { "amenities": amenities}),
+    data: JSON.stringify({"amenities": amenities}),
     contentType: 'application/json',
     dataType: 'json',
     success: function (data) {

@@ -8,11 +8,7 @@ $(document).ready(function () {
       delete checkedAmenities[amenityId];
     }
     let amenities = Object.values(checkedAmenities);
-    if (amenities.length > 0) {
-      $('div.amenities h4').text(amenities).join(', ');
-    } else {
-      $('div.amenities h4').html('&nbsp;');
-    }
+    $('div.amenities h4').text(amenities).join(', ');
   });
 });
 
