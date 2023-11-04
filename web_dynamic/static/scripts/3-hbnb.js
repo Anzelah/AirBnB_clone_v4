@@ -41,7 +41,7 @@ $.ajax({
       let rooms = place.number_rooms === 1 ? ' Bedroom' : ' Bedrooms';
       let bath = place.number_bathrooms === 1 ? ' Bathroom' : ' Bathrooms';
 
-      $('section.places').append('<article><div class="title_box"><h2>' + place.name + '</h2><div class="price_by_night">$' + place.price_by_night + '</div></div><div class="information"><div class="max_guest">' + guest + '</div><div class="number_rooms">' + rooms + '</div><div class="number_bathrooms">' + bath + '</div><div class="description"><p>' + place.description + '</p></div></article>');
+      $('section.places').append('<article><div class="title_box"><h2>' + place.name + '</h2><div class="price_by_night">$' + place.price_by_night + '</div></div><div class="information"><div class="max_guest">' + place.max_guest + guest + '</div><div class="number_rooms">' + place.number_rooms + rooms + '</div><div class="number_bathrooms">' + place.number_bathrooms + bath + '</div><div class="description"><p>' + place.description + '</p></div></article>');
     }
   }
 });
