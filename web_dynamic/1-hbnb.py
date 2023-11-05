@@ -30,16 +30,15 @@ def hbnb():
         st_ct.append([state, sorted(state.cities, key=lambda k: k.name)])
 
     amenities = storage.all(Amenity).values()
-    amenities = sorted(amenities, key=lambda k: k.name)
-
+    amenities = sorted(amenities, key=lambda k: k.name) 
     places = storage.all(Place).values()
     places = sorted(places, key=lambda k: k.name)
     cache_id = uuid.uuid4()
-
     return render_template('1-hbnb.html',
                            states=st_ct,
                            amenities=amenities,
-                           places=places, cache_id=cache_id)
+                           places=places,
+                           cache_id=cache_id)
 
 
 if __name__ == "__main__":
