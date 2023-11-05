@@ -63,11 +63,11 @@ button:hover {
     scrollbar-width: none;
     max-height: 300px;
 }
-
+/*
 .popover::-webkit-scrollbar{
     width: 0px;
 }
-
+*/
 .amenities .popover {
     padding: 10px 0;
     margin-left: -5px;
@@ -100,4 +100,8 @@ button:hover {
 .amenities:hover .popover,
 .locations:hover .popover {
     visibility: visible;
+}
+
+li input {
+	margin-right: 10px;
 }
