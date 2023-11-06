@@ -1,24 +1,26 @@
 $(document).ready(function () {
-  let checkedAmenities = {};
-  $('input:checkbox').change(function () {
-    let amenityId = $(this).data('id');
-    if ($(this).prop('checked')) {
-      checkedAmenities[amenityId] = $(this).data('name');
+  let selectedAmenities = {};
+  $(document).on('change', "input[type='checkbox']", function () {
+    if (this.checked) {
+      selectedAmenities[$(this).data('id')] = $(this).data('name');
     } else {
-      delete checkedAmenities[amenityId];
+      delete selectedAmenities[$(this).data('id')];
     }
-    let amenities = Object.values(checkedAmenities);
-    $('div.amenities h4').text(amenities).join(', ');
-  });
-});
-
-$(function () {
-  const url = 'http://0.0.0.0:5001/api/v1/status/';
-  $.get(url, function (data, textStatus) {
-    if (textStatus === 'success') {
-      $('#api_status').addClass('available');
+    let amenitiesList = Object.values(selectedAmenities);
+    if (amenitiesList.length > 0) {
+      $('div.amenities > h4').text(Object.values(selectedAmenities).join(', '));
     } else {
-      $('#api_status').removeClass('available');
+      $('div.amenities > h4').html('&nbsp;');
+    }
+  });
+
+  $.get('http://0.0.0.0:5001/api/v1/status/', function (data, textStatus) {
+    if (textStatus === 'success') {
+      if (data.status === 'OK') {
+        $('#api_status').addClass('available');
+      } else {
+        $('#api_status').removeClass('available');
+      }
     }
   });
 });
